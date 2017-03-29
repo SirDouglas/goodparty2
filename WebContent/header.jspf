@@ -1,0 +1,83 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Good Party</title>
+	<link href="<c:url value="/goodparty.css"/>" rel="stylesheet" type="text/css" media="screen" />
+		<link href="<c:url value="/css/jquery-ui.css"/>" rel="stylesheet" type="text/css" media="screen" />
+		<link href="<c:url value="/css/jquery-theme.css"/>" rel="stylesheet" type="text/css" media="screen" />
+		<link href="<c:url value="/css/jquery-structure.css"/>" rel="stylesheet" type="text/css" media="screen" />
+		<script type="text/javascript" src="<c:url value="/js/jquery-3.js"/>"></script>
+		<script type="text/javascript" src="<c:url value="/js/jquery-ui.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/js/puts.js"/>"></script>
+	</head>
+<body>
+<header>
+<h1>Mundo </h1>
+
+<nav  id="menu">
+<ul> 
+<li> <a href="<c:url value="/aluno/novo"/>">Cadastra Alunos </a>  </li>
+<li> <a href="<c:url value="/aluno"/>">Lista de Alunos</a>  </li>
+<li> <a href="<c:url value="/classe/nova"/>">Cadastra Classes </a>  </li>
+<li> <a href="<c:url value="/classe"/>">Lista de Classes </a>  </li>
+<li> <a href="<c:url value="/materia"/>">Lista de Materias </a> </li>
+<li> <a href="<c:url value="/materia/nova"/>">Cadastra Materias </a>  </li>
+<li> <a href="<c:url value="/professor"/>">Lista de Professores </a> </li>
+<li> <a href="<c:url value="/professor/novo"/>">Cadastra Professores </a>  </li>
+<li> <a href="<c:url value="/css/jquery-ui.css"/>">Hello2 </a> </li>
+<li> <a href="<c:url value="/css/jquery-ui.css"/>">Hello3 </a>  </li>
+<li> <a href="<c:url value="/css/jquery-ui.css"/>">Hello2 </a> </li>
+<li> <a href="<c:url value="/css/jquery-ui.css"/>">Hello3 </a>  </li>
+</ul>
+ </nav>
+ <div id="erros">
+  <ul>
+    <c:forEach items="${errors}" var="error">
+      <li>${error.category } - ${error.message }</li>
+    </c:forEach>
+  </ul>
+</div>
+ <div class="sar"> 
+ <form action="<c:url value="/aluno/busca"/>">
+ <input id="busca" name="nome" />
+ </form>
+ <script type="text/javascript">
+ $("#busca").puts("Busca alunos por nome");
+ </script>
+ <script type="text/javascript">
+ $( function() { 
+	 console.log("ola");
+    $("#busca").autocomplete({
+     		 source: function(request,response ) {
+		 $.ajax({	 
+			 	url: "/goodparty2/aluno/busca.json",
+				dataType: "json",
+				data: {
+					term: request.term
+				},
+				 success: function( data ) {
+					  response(
+			$.map(data,function(item) {
+				return {
+					value: item.nomeAluno
+				};
+							})
+			);
+					  console.log(data[0].nomeAluno);
+				 }
+						});
+	},
+	minLength: 2
+	});
+	 
+ });
+
+ </script> 
+  </div>
+
+</header>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+body {
+background-color: #990099;
+margin: 40px;
+}
+p { 
+background-color: yellow;
+color: blue;
+}
+
+fieldset legend {
+	border: 2px solid #660033;
+	-moz-border-radius: 3px;
+	background-color: #00ffff;
+	font-weight: bold;
+	padding: 3px;
+	margin-bottom: 15px;
+	font-size: 16pt;
+	color: #365372;
+}
+
+header {
+background-color: 	 #333333;
+color: #99ffbb;
+margin: 30px;
+height: 140px;
+}
+
+footer {
+background-color: 	 #1a1a1a;
+color: #a64dff;
+}
+
+ul {
+list-style:none;
+}
+
+#menu ul li a {
+
+display: inline-block;
+}
+
+#menu ul li { display: inline; }
+
+th {
+	border: 1px solid #365372;
+	border-color: red;
+	background-color: #808000;
+}
+
+td {
+	border: 1px solid;
+}
+
+#erros {
+	background-color: #ff0000;
+}
+
+.link {
+	  background-color: transparent;
+	  color: #3333ff; 
+	  border: none;
+	  text-decoration: underline;
+	   cursor: pointer;
+}
+
+.sar {
+	position: relative;
+	left: 30px;
+	top: 0px;
+}
+
+#main {
+	position: relative;
+	left: 20px;
+	top: 10px;
+}
